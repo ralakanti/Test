@@ -166,6 +166,17 @@ public class AmazonTestScripts extends AmazonReusables {
 		WebElement deAc2 = driver.findElement(By.xpath(".//*[@id='ref_2488708011']/li[7]/span"));
 		checkOptionValidity(deAc2, "Samsung Galaxy S 7");
 		
+		List<WebElement> stars = driver.findElements(By.xpath(".//*[@id='ref_2491147011']/li/a/i"));
+		String[] rating = {"star-4","star-3","star-2","star-1"};
+		for(int i=0; i<stars.size();i++){
+			if(stars.get(i).getAttribute("class").contains(rating[i])){
+				Update_Report("Pass", "Ratings", rating[i]+" is present");
+			}
+			else{
+				Update_Report("Fail", "Ratings", rating[i]+" is NOT present");
+			}
+		}
+		
 		bw.close();
 	}
 	
